@@ -28,18 +28,27 @@ public class WormPart : MonoBehaviour
 
     void Update()
     {
+        Vector3 pcV = pathCreator.path.GetPointAtDistance(distanceTravelled);
+        Quaternion pcQ = pathCreator.path.GetRotationAtDistance(distanceTravelled); ;
+
+        transform.position = pcV;// new Vector3(pcV.x, 0.5f, pcV.z);
+        transform.rotation = pcQ;
         switch (wormPartType)
         {
-            case WormPartType.Head:
-                transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled);
-                transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled);
-                break;
-            case WormPartType.Body:
-                transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled);
-                transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled);
-                //transform.position = nextPart.GetComponent<PathFollow>().pathCreator.path.GetPointAtDistance(distanceTravelled);
-                //transform.rotation = nextPart.GetComponent<PathFollow>().pathCreator.path.GetRotationAtDistance(distanceTravelled);
-                break;
+            //case WormPartType.Head:
+
+            //    transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled);
+            //    Quaternion q = pathCreator.path.GetRotationAtDistance(distanceTravelled);
+            //    transform.rotation = new Quaternion(q.x,0,q.z,0);
+            //    break;
+            //case WormPartType.Body:
+            //    Quaternion qq = pathCreator.path.GetRotationAtDistance(distanceTravelled);
+            //    transform.rotation = new Quaternion(qq.x, 0, qq.z, 0);
+            //    transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled);
+            //    transform.rotation = qq;
+            //    //transform.position = nextPart.GetComponent<PathFollow>().pathCreator.path.GetPointAtDistance(distanceTravelled);
+            //    //transform.rotation = nextPart.GetComponent<PathFollow>().pathCreator.path.GetRotationAtDistance(distanceTravelled);
+            //    break;
         }
         distanceTravelled += speedTravelled * Time.deltaTime;
     }
